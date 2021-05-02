@@ -6,7 +6,7 @@ class Zed < Formula
   depends_on "go" => :build
 
   def install
-    system "go build ./cmd/zed"
+    system "go build --ldflags \"-s -w -X github.com/authzed/zed/internal/version.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/zed"
     bin.install "zed"
   end
 
