@@ -13,11 +13,11 @@ class Zed < Formula
   on_linux do
     if Hardware::CPU.intel?
       url "https://github.com/<repo_owner>/<repo_name>/releases/download/v0.0.1/zed_0.0.1_linux_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "1159b966ad292441aab84f2220033669cb13e0e7e06514eca418c355a849a6ac"
+      sha256 "1d89728654b9749aa95b4c524a4fe1630ecc121dc0fb36b750a94f80c3a70f7d"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/<repo_owner>/<repo_name>/releases/download/v0.0.1/zed_0.0.1_linux_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "c06e8a90de6d4cf8fd8adf8da4a68c2380e63d0fa8f8eed25c6537e25c6a7087"
+      sha256 "58111eb41c2717be8ea19a376801e72b0d70a30d5f373e20a3517576e43310d6"
     end
   end
 
