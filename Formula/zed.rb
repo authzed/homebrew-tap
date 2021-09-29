@@ -5,29 +5,29 @@
 class Zed < Formula
   desc "manage Authzed from your command line."
   homepage "https://authzed.com/"
-  version "0.0.1"
+  version "0.1.0"
   license "Apache-2.0"
   bottle :unneeded
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/<repo_owner>/<repo_name>/releases/download/v0.0.1/zed_0.0.1_darwin_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "2708d5c740457eeacc8d758a79998465dcc0e145eded4c6b9f2cbb381a9fcf63"
+      url "https://github.com/authzed/zed/releases/download/v0.1.0/zed_0.1.0_darwin_amd64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "29e989162276e9ff1c7d7886eabd6c6aab5f51d7ab5d96f78daea092d60b7385"
     end
     if Hardware::CPU.arm?
-      url "https://github.com/<repo_owner>/<repo_name>/releases/download/v0.0.1/zed_0.0.1_darwin_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "22c0fb4891b47cc3dda1d4ea31536360e908dead1fbda7a78e1b1d0804c127f8"
+      url "https://github.com/authzed/zed/releases/download/v0.1.0/zed_0.1.0_darwin_arm64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "21f7a7de73d119993780dd0fb81fe2b6b85d874c9593df03290dd153238b14c5"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/<repo_owner>/<repo_name>/releases/download/v0.0.1/zed_0.0.1_linux_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "6595c0db6045f47d6ce67aa54992bf4d4c5ae935e7df9c42000d6c238677c511"
+      url "https://github.com/authzed/zed/releases/download/v0.1.0/zed_0.1.0_linux_amd64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "7f8e1aabd37d49679094d230e70e289c6861c8eeca486f075896502a26223acc"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/<repo_owner>/<repo_name>/releases/download/v0.0.1/zed_0.0.1_linux_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "9d00ff94029bb5f14edef22bd4432d84b4eabe9c84b0ada23da41e109cef7767"
+      url "https://github.com/authzed/zed/releases/download/v0.1.0/zed_0.1.0_linux_arm64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "19a1ea18cb84e24fa0f7289aa81da6701985a962489d8bc8ca229cf9b5b4d132"
     end
   end
 
