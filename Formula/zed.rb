@@ -8,16 +8,26 @@ class Zed < Formula
   version "0.0.1"
   license "Apache-2.0"
   bottle :unneeded
-  depends_on :linux
+
+  on_macos do
+    if Hardware::CPU.intel?
+      url "https://github.com/<repo_owner>/<repo_name>/releases/download/v0.0.1/zed_0.0.1_darwin_amd64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "2708d5c740457eeacc8d758a79998465dcc0e145eded4c6b9f2cbb381a9fcf63"
+    end
+    if Hardware::CPU.arm?
+      url "https://github.com/<repo_owner>/<repo_name>/releases/download/v0.0.1/zed_0.0.1_darwin_arm64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "22c0fb4891b47cc3dda1d4ea31536360e908dead1fbda7a78e1b1d0804c127f8"
+    end
+  end
 
   on_linux do
     if Hardware::CPU.intel?
       url "https://github.com/<repo_owner>/<repo_name>/releases/download/v0.0.1/zed_0.0.1_linux_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "1d89728654b9749aa95b4c524a4fe1630ecc121dc0fb36b750a94f80c3a70f7d"
+      sha256 "6595c0db6045f47d6ce67aa54992bf4d4c5ae935e7df9c42000d6c238677c511"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/<repo_owner>/<repo_name>/releases/download/v0.0.1/zed_0.0.1_linux_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "58111eb41c2717be8ea19a376801e72b0d70a30d5f373e20a3517576e43310d6"
+      sha256 "9d00ff94029bb5f14edef22bd4432d84b4eabe9c84b0ada23da41e109cef7767"
     end
   end
 
