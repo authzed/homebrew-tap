@@ -36,6 +36,9 @@ class Zed < Formula
   depends_on "go" => :build
 
   def install
+    if !File.exists? "zed"
+      system "go build --ldflags \"-s -w -X github.com/authzed/zed/internal/version.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/zed"
+    end
     bin.install "zed"
   end
 

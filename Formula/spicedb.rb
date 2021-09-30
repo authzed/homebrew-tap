@@ -36,6 +36,9 @@ class Spicedb < Formula
   depends_on "go" => :build
 
   def install
+    if !File.exists? "spicedb"
+      system "go build --ldflags \"-s -w -X github.com/authzed/spicedb/internal/version.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/spicedb"
+    end
     bin.install "spicedb"
   end
 
