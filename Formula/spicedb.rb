@@ -40,6 +40,9 @@ class Spicedb < Formula
       system "go build --ldflags \"-s -w -X github.com/authzed/spicedb/internal/version.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/spicedb"
     end
     bin.install "spicedb"
+    (bash_completion/"spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "bash")
+    (zsh_completion/"_spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "zsh")
+    (fish_completion/"spicedb.fish").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "fish")
   end
 
   test do
