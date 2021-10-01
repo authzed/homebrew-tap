@@ -5,29 +5,29 @@
 class Zed < Formula
   desc "manage Authzed from your command line."
   homepage "https://authzed.com/"
-  version "0.1.0"
+  version "0.1.1"
   license "Apache-2.0"
   bottle :unneeded
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/authzed/zed/releases/download/v0.1.0/zed_0.1.0_darwin_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "29e989162276e9ff1c7d7886eabd6c6aab5f51d7ab5d96f78daea092d60b7385"
+      url "https://github.com/authzed/zed/releases/download/v0.1.1/zed_0.1.1_darwin_amd64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "f49153b12e13a9d15664fb054c6e0fc5f6109ede95f0531e733698144f0171dd"
     end
     if Hardware::CPU.arm?
-      url "https://github.com/authzed/zed/releases/download/v0.1.0/zed_0.1.0_darwin_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "21f7a7de73d119993780dd0fb81fe2b6b85d874c9593df03290dd153238b14c5"
+      url "https://github.com/authzed/zed/releases/download/v0.1.1/zed_0.1.1_darwin_arm64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "b241ba55dbacb7d628521741084415610e78df0d25e4148135ca494f33fecdd5"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/authzed/zed/releases/download/v0.1.0/zed_0.1.0_linux_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "7f8e1aabd37d49679094d230e70e289c6861c8eeca486f075896502a26223acc"
+      url "https://github.com/authzed/zed/releases/download/v0.1.1/zed_0.1.1_linux_amd64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "7f5bcdd2fa74ec357c9fea0599156b9b5cba98ac8fed3cfea6eb07684b78914a"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/authzed/zed/releases/download/v0.1.0/zed_0.1.0_linux_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "19a1ea18cb84e24fa0f7289aa81da6701985a962489d8bc8ca229cf9b5b4d132"
+      url "https://github.com/authzed/zed/releases/download/v0.1.1/zed_0.1.1_linux_arm64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "b46c6d65a3b360e688af6c12f3d0b5cc9c60e162c8dddbb1d78fb1e0520435c3"
     end
   end
 
@@ -40,6 +40,9 @@ class Zed < Formula
       system "go build --ldflags \"-s -w -X github.com/authzed/zed/internal/version.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/zed"
     end
     bin.install "zed"
+    (bash_completion/"zed").write Utils.safe_popen_read("#{bin}/zed", "completion", "bash")
+    (zsh_completion/"_zed").write Utils.safe_popen_read("#{bin}/zed", "completion", "zsh")
+    (fish_completion/"zed.fish").write Utils.safe_popen_read("#{bin}/zed", "completion", "fish")
   end
 
   test do
