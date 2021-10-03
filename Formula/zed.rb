@@ -5,29 +5,29 @@
 class Zed < Formula
   desc "manage Authzed from your command line."
   homepage "https://authzed.com/"
-  version "0.1.1"
+  version "0.1.2"
   license "Apache-2.0"
   bottle :unneeded
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/authzed/zed/releases/download/v0.1.1/zed_0.1.1_darwin_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "f49153b12e13a9d15664fb054c6e0fc5f6109ede95f0531e733698144f0171dd"
+      url "https://github.com/authzed/zed/releases/download/v0.1.2/zed_0.1.2_darwin_amd64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "24e2dacf188109da56efe392be93d2044d896d95e18f556dd1bca67c6faaa3aa"
     end
     if Hardware::CPU.arm?
-      url "https://github.com/authzed/zed/releases/download/v0.1.1/zed_0.1.1_darwin_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "b241ba55dbacb7d628521741084415610e78df0d25e4148135ca494f33fecdd5"
+      url "https://github.com/authzed/zed/releases/download/v0.1.2/zed_0.1.2_darwin_arm64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "5b8c22f7f99baaa315dd6a8b7cad5a3f2702fc95f0aac2980c2abddb1e3792c5"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/authzed/zed/releases/download/v0.1.1/zed_0.1.1_linux_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "7f5bcdd2fa74ec357c9fea0599156b9b5cba98ac8fed3cfea6eb07684b78914a"
+      url "https://github.com/authzed/zed/releases/download/v0.1.2/zed_0.1.2_linux_amd64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "f4e6a9ebd0c52dd63ebdf43100bad94b6fae9c131b4914b95a3d6aee43519a2e"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/authzed/zed/releases/download/v0.1.1/zed_0.1.1_linux_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "b46c6d65a3b360e688af6c12f3d0b5cc9c60e162c8dddbb1d78fb1e0520435c3"
+      url "https://github.com/authzed/zed/releases/download/v0.1.2/zed_0.1.2_linux_arm64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "fc3f7739ab56c9f3113e29bebef023323a71f0d17a06318722786771052b9849"
     end
   end
 
