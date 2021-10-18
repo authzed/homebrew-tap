@@ -5,29 +5,29 @@
 class Zed < Formula
   desc "manage Authzed from your command line."
   homepage "https://authzed.com/"
-  version "0.1.2"
+  version "0.1.3"
   license "Apache-2.0"
   bottle :unneeded
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/authzed/zed/releases/download/v0.1.2/zed_0.1.2_darwin_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "24e2dacf188109da56efe392be93d2044d896d95e18f556dd1bca67c6faaa3aa"
-    end
     if Hardware::CPU.arm?
-      url "https://github.com/authzed/zed/releases/download/v0.1.2/zed_0.1.2_darwin_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "5b8c22f7f99baaa315dd6a8b7cad5a3f2702fc95f0aac2980c2abddb1e3792c5"
+      url "https://github.com/authzed/zed/releases/download/v0.1.3/zed_0.1.3_darwin_arm64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "06cba69c3ffc07e100b75414066fa10df7ba7b5425ecb562cd96538fe9c1ca13"
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/authzed/zed/releases/download/v0.1.3/zed_0.1.3_darwin_amd64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "da2691f40906c6ef424302bc019737f4941dacf95cd0a01d7aca6d3be1ad9bde"
     end
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/authzed/zed/releases/download/v0.1.2/zed_0.1.2_linux_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "f4e6a9ebd0c52dd63ebdf43100bad94b6fae9c131b4914b95a3d6aee43519a2e"
-    end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/authzed/zed/releases/download/v0.1.2/zed_0.1.2_linux_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "fc3f7739ab56c9f3113e29bebef023323a71f0d17a06318722786771052b9849"
+      url "https://github.com/authzed/zed/releases/download/v0.1.3/zed_0.1.3_linux_arm64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "dce99900e23cde674568b7a5edccdc2d82f844b32a5785452aea2ae77b1661be"
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/authzed/zed/releases/download/v0.1.3/zed_0.1.3_linux_amd64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "cee9ae5fdfc949a0e839858261de45e3b2c20d6327a5463a8fc402b12a2efb5a"
     end
   end
 
