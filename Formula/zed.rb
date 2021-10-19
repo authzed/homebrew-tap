@@ -12,22 +12,22 @@ class Zed < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/authzed/zed/releases/download/v0.1.3/zed_0.1.3_darwin_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "06cba69c3ffc07e100b75414066fa10df7ba7b5425ecb562cd96538fe9c1ca13"
+      sha256 "c361d0c87948a81e4962a7157b25a1d364de924771f47c625e42d5ea4e6cb9d0"
     end
     if Hardware::CPU.intel?
       url "https://github.com/authzed/zed/releases/download/v0.1.3/zed_0.1.3_darwin_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "da2691f40906c6ef424302bc019737f4941dacf95cd0a01d7aca6d3be1ad9bde"
+      sha256 "68a1f38f158231bfed32cd3c723e43ef5d474c5c66c88e8d495230b34b6d0bf0"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/authzed/zed/releases/download/v0.1.3/zed_0.1.3_linux_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "dce99900e23cde674568b7a5edccdc2d82f844b32a5785452aea2ae77b1661be"
+      sha256 "f2eb5725ecd04e6723246336412f02148dfd8b057c22bae8d9eb4f0e39a51ab7"
     end
     if Hardware::CPU.intel?
       url "https://github.com/authzed/zed/releases/download/v0.1.3/zed_0.1.3_linux_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "cee9ae5fdfc949a0e839858261de45e3b2c20d6327a5463a8fc402b12a2efb5a"
+      sha256 "137acd8aba2430d7581cf9796b35a88452ddbcde433447f413aa87e4faf783da"
     end
   end
 
