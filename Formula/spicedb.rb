@@ -5,17 +5,17 @@
 class Spicedb < Formula
   desc "SpiceDB is a Zanzibar-inspired database that stores, computes, and validates application permissions."
   homepage "https://authzed.com/"
-  version "1.2.0"
+  version "1.3.0"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/authzed/spicedb/releases/download/v1.2.0/spicedb_1.2.0_darwin_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "ede5383e4a1e8fc2240c9c52cda87f2a6b9ac2cbd4c13bef62e021257dc07e34"
+      url "https://github.com/authzed/spicedb/releases/download/v1.3.0/spicedb_1.3.0_darwin_amd64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "f306652448e8c65ad503cb02d4262eb917e34b50ef5d59b78f0a9918343c550b"
 
       def install
         if !File.exists? "spicedb"
-          system "go build --ldflags \"-s -w -X github.com/authzed/spicedb/internal/version.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/spicedb"
+          system "go build --ldflags \"-s -w -X github.com/authzed/spicedb/pkg/cmd/version.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/spicedb"
         end
         bin.install "spicedb"
         (bash_completion/"spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "bash")
@@ -24,12 +24,12 @@ class Spicedb < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/authzed/spicedb/releases/download/v1.2.0/spicedb_1.2.0_darwin_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "ca9649d790d00ac560cd00c6e04d077eec0b13b5776ea95e9cd9a6cac643df5a"
+      url "https://github.com/authzed/spicedb/releases/download/v1.3.0/spicedb_1.3.0_darwin_arm64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "d533978c8eba6f1c0d641e700ce09f2238a70ab8e850df9698400179fa091ef5"
 
       def install
         if !File.exists? "spicedb"
-          system "go build --ldflags \"-s -w -X github.com/authzed/spicedb/internal/version.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/spicedb"
+          system "go build --ldflags \"-s -w -X github.com/authzed/spicedb/pkg/cmd/version.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/spicedb"
         end
         bin.install "spicedb"
         (bash_completion/"spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "bash")
@@ -41,12 +41,12 @@ class Spicedb < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/authzed/spicedb/releases/download/v1.2.0/spicedb_1.2.0_linux_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "0e332c656df6582795078f658617d5395c8f7268bca83a8eba9646c0783c8c79"
+      url "https://github.com/authzed/spicedb/releases/download/v1.3.0/spicedb_1.3.0_linux_arm64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "23ce35fc60179a0e84edaefc70cb8e65cfbdecdd062c991788b7f58df182a746"
 
       def install
         if !File.exists? "spicedb"
-          system "go build --ldflags \"-s -w -X github.com/authzed/spicedb/internal/version.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/spicedb"
+          system "go build --ldflags \"-s -w -X github.com/authzed/spicedb/pkg/cmd/version.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/spicedb"
         end
         bin.install "spicedb"
         (bash_completion/"spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "bash")
@@ -55,12 +55,12 @@ class Spicedb < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/authzed/spicedb/releases/download/v1.2.0/spicedb_1.2.0_linux_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "ec7de8a0075f946b2396b3e5be703922f749c7eb4252162d05cf7f0dd19d62bd"
+      url "https://github.com/authzed/spicedb/releases/download/v1.3.0/spicedb_1.3.0_linux_amd64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "29dfc0d1b9fae907120cfdc52ab1af6671cb0a505b01fd298e3ba85fc71d2efb"
 
       def install
         if !File.exists? "spicedb"
-          system "go build --ldflags \"-s -w -X github.com/authzed/spicedb/internal/version.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/spicedb"
+          system "go build --ldflags \"-s -w -X github.com/authzed/spicedb/pkg/cmd/version.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/spicedb"
         end
         bin.install "spicedb"
         (bash_completion/"spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "bash")
