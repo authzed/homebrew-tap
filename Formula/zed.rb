@@ -5,13 +5,13 @@
 class Zed < Formula
   desc "manage Authzed from your command line."
   homepage "https://authzed.com/"
-  version "0.4.2"
+  version "0.4.3"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/authzed/zed/releases/download/v0.4.2/zed_0.4.2_darwin_arm64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "ac875a8d0ec0e619facd73f6a2802c5162624137673159359fbc921659b01bca"
+      url "https://github.com/authzed/zed/releases/download/v0.4.3/zed_0.4.3_darwin_arm64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "7fc560388812a76267741075534b6abf129673cf0dda5d58ea92c617ed61a0bd"
 
       def install
         if !File.exists? "zed"
@@ -24,8 +24,8 @@ class Zed < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/authzed/zed/releases/download/v0.4.2/zed_0.4.2_darwin_amd64.tar.gz", :using => CurlDownloadStrategy
-      sha256 "661203af28779a22c9afe55fc52738a8a5dedbfe8c5b690b11128b2a6de1561b"
+      url "https://github.com/authzed/zed/releases/download/v0.4.3/zed_0.4.3_darwin_amd64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "17312b61a2eca2a990d1f84579351ccd2797d60f7d7c704e39d2ccb87b938ee5"
 
       def install
         if !File.exists? "zed"
@@ -40,9 +40,9 @@ class Zed < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/authzed/zed/releases/download/v0.4.2/zed_0.4.2_linux_amd64_gnu.tar.gz", :using => CurlDownloadStrategy
-      sha256 "291c91555ebe625780f2dd740d41743e29f690aaa647ea3c0b60ccb40fd4d6d2"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/authzed/zed/releases/download/v0.4.3/zed_0.4.3_linux_arm64_gnu.tar.gz", :using => CurlDownloadStrategy
+      sha256 "1056d3a132f08243fc3da43ea04bb30802d0b47713a56643999c971b19041fed"
 
       def install
         if !File.exists? "zed"
@@ -54,9 +54,9 @@ class Zed < Formula
         (fish_completion/"zed.fish").write Utils.safe_popen_read("#{bin}/zed", "completion", "fish")
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/authzed/zed/releases/download/v0.4.2/zed_0.4.2_linux_arm64_gnu.tar.gz", :using => CurlDownloadStrategy
-      sha256 "85453f0cf7dc780507e56a2d86c873fbfb18ab06adac8a88dd559da3f740a27e"
+    if Hardware::CPU.intel?
+      url "https://github.com/authzed/zed/releases/download/v0.4.3/zed_0.4.3_linux_amd64_gnu.tar.gz", :using => CurlDownloadStrategy
+      sha256 "07a7154534d50b9c63e4a965f3beba73f28cc0ff36ca498d5ea42b479478b959"
 
       def install
         if !File.exists? "zed"
