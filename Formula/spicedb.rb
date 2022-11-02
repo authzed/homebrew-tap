@@ -5,15 +5,15 @@
 class Spicedb < Formula
   desc "SpiceDB is a Zanzibar-inspired database that stores, computes, and validates application permissions."
   homepage "https://authzed.com/"
-  version "1.13.0"
+  version "1.14.0"
   license "Apache-2.0"
 
   depends_on "go" => :build
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/authzed/spicedb/releases/download/v1.13.0/spicedb_1.13.0_darwin_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "61bc5332336b0b01c70f21d63d221f4c976771dd118709f4a61955ea50ca6b7e"
+      url "https://github.com/authzed/spicedb/releases/download/v1.14.0/spicedb_1.14.0_darwin_arm64.tar.gz", using: CurlDownloadStrategy
+      sha256 "c8f95917327a7e09f67cc660dea4d9e1c2912cb6dcd7e3550f1db88547281dcd"
 
       def install
         if !File.exists? "spicedb"
@@ -26,8 +26,8 @@ class Spicedb < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/authzed/spicedb/releases/download/v1.13.0/spicedb_1.13.0_darwin_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "24ed559c60ff7e819c94ce333c910048d833bc681a4af073c479cf499d00a5bb"
+      url "https://github.com/authzed/spicedb/releases/download/v1.14.0/spicedb_1.14.0_darwin_amd64.tar.gz", using: CurlDownloadStrategy
+      sha256 "74d0d6d58bff5bd586f45150544197c584d4ecb0e5d533d9d8875cf8468b9c93"
 
       def install
         if !File.exists? "spicedb"
@@ -43,8 +43,8 @@ class Spicedb < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/authzed/spicedb/releases/download/v1.13.0/spicedb_1.13.0_linux_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "a035174195a198c4ee82eb28d3e74e7c4e4f89666987e871a35dbf83a2e907fe"
+      url "https://github.com/authzed/spicedb/releases/download/v1.14.0/spicedb_1.14.0_linux_arm64.tar.gz", using: CurlDownloadStrategy
+      sha256 "fc90bc6fa395ab84d97358070713a57f54bdd6dcd4aa5064a2f921252a433a6c"
 
       def install
         if !File.exists? "spicedb"
@@ -57,8 +57,8 @@ class Spicedb < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/authzed/spicedb/releases/download/v1.13.0/spicedb_1.13.0_linux_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "abb75cebc982d4dfd8604c6a9da86ca90136c013067cf350d1a06e594eaed952"
+      url "https://github.com/authzed/spicedb/releases/download/v1.14.0/spicedb_1.14.0_linux_amd64.tar.gz", using: CurlDownloadStrategy
+      sha256 "1ef0304f4b131c441a029a2d58025bdbd16b6d07db0064e71d737be5b6c53903"
 
       def install
         if !File.exists? "spicedb"
