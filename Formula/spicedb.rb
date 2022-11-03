@@ -13,11 +13,11 @@ class Spicedb < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/authzed/spicedb/releases/download/v1.14.0/spicedb_1.14.0_darwin_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "c8f95917327a7e09f67cc660dea4d9e1c2912cb6dcd7e3550f1db88547281dcd"
+      sha256 "96040451bfee0754dbd25d11f1a069314bb4908e8ea0cdf6c9d9f4c897ce0365"
 
       def install
         if !File.exists? "spicedb"
-          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
+          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
         end
         bin.install "spicedb"
         (bash_completion/"spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "bash")
@@ -27,11 +27,11 @@ class Spicedb < Formula
     end
     if Hardware::CPU.intel?
       url "https://github.com/authzed/spicedb/releases/download/v1.14.0/spicedb_1.14.0_darwin_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "74d0d6d58bff5bd586f45150544197c584d4ecb0e5d533d9d8875cf8468b9c93"
+      sha256 "c313f442a3a3b44bf05854ef642bd6eccdb3a88c4c90940cb9a488aa1e4a3805"
 
       def install
         if !File.exists? "spicedb"
-          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
+          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
         end
         bin.install "spicedb"
         (bash_completion/"spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "bash")
@@ -42,13 +42,13 @@ class Spicedb < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/authzed/spicedb/releases/download/v1.14.0/spicedb_1.14.0_linux_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "fc90bc6fa395ab84d97358070713a57f54bdd6dcd4aa5064a2f921252a433a6c"
+    if Hardware::CPU.intel?
+      url "https://github.com/authzed/spicedb/releases/download/v1.14.0/spicedb_1.14.0_linux_amd64.tar.gz", using: CurlDownloadStrategy
+      sha256 "2502c01efb250e9f4ccf1ca0b15efd6d2cade53d7ff58c00abaed5200de60101"
 
       def install
         if !File.exists? "spicedb"
-          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
+          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
         end
         bin.install "spicedb"
         (bash_completion/"spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "bash")
@@ -56,13 +56,13 @@ class Spicedb < Formula
         (fish_completion/"spicedb.fish").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "fish")
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/authzed/spicedb/releases/download/v1.14.0/spicedb_1.14.0_linux_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "1ef0304f4b131c441a029a2d58025bdbd16b6d07db0064e71d737be5b6c53903"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/authzed/spicedb/releases/download/v1.14.0/spicedb_1.14.0_linux_arm64.tar.gz", using: CurlDownloadStrategy
+      sha256 "939e8c190be753fda4c06a9e302bc9a0e6ec14454206b61633720a159341d33b"
 
       def install
         if !File.exists? "spicedb"
-          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
+          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
         end
         bin.install "spicedb"
         (bash_completion/"spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "bash")
