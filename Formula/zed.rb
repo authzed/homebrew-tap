@@ -5,19 +5,19 @@
 class Zed < Formula
   desc "manage Authzed from your command line."
   homepage "https://authzed.com/"
-  version "0.8.0"
+  version "0.9.0"
   license "Apache-2.0"
 
   depends_on "go" => :build
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/authzed/zed/releases/download/v0.8.0/zed_0.8.0_darwin_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "37c5772e211af9a876d2798a860159ec79924a27208b8651a99a052a1b0ea0cc"
+      url "https://github.com/authzed/zed/releases/download/v0.9.0/zed_0.9.0_darwin_amd64.tar.gz", using: CurlDownloadStrategy
+      sha256 "867ad799d7d365ed5a75abc5c6204fa8974f27597e51ddafd25702a58ea979ca"
 
       def install
         if !File.exists? "zed"
-          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/zed"
+          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/zed"
         end
         bin.install "zed"
         (bash_completion/"zed").write Utils.safe_popen_read("#{bin}/zed", "completion", "bash")
@@ -26,12 +26,12 @@ class Zed < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/authzed/zed/releases/download/v0.8.0/zed_0.8.0_darwin_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "381ed2025f328b91cb5348824e04c18b93c98166dda0f943bd761bb296948bde"
+      url "https://github.com/authzed/zed/releases/download/v0.9.0/zed_0.9.0_darwin_arm64.tar.gz", using: CurlDownloadStrategy
+      sha256 "2afb2a795ea4a84311daa272e3b3d248bdbd04f5f284bd097570da81ce24b27c"
 
       def install
         if !File.exists? "zed"
-          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/zed"
+          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/zed"
         end
         bin.install "zed"
         (bash_completion/"zed").write Utils.safe_popen_read("#{bin}/zed", "completion", "bash")
@@ -43,12 +43,12 @@ class Zed < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/authzed/zed/releases/download/v0.8.0/zed_0.8.0_linux_arm64_gnu.tar.gz", using: CurlDownloadStrategy
-      sha256 "72677642c94199ec801f913a6be8a8b6045039a0b69d0a084b2c36211d0a786f"
+      url "https://github.com/authzed/zed/releases/download/v0.9.0/zed_0.9.0_linux_arm64_gnu.tar.gz", using: CurlDownloadStrategy
+      sha256 "65f465b0983591d1c0ea66c80a6184a21434c3eb206a93b794e9083893d74468"
 
       def install
         if !File.exists? "zed"
-          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/zed"
+          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/zed"
         end
         bin.install "zed"
         (bash_completion/"zed").write Utils.safe_popen_read("#{bin}/zed", "completion", "bash")
@@ -57,12 +57,12 @@ class Zed < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/authzed/zed/releases/download/v0.8.0/zed_0.8.0_linux_amd64_gnu.tar.gz", using: CurlDownloadStrategy
-      sha256 "7e70c100910e2a72754d254cb477189279c92e87586b46fd1051add9cfa6d527"
+      url "https://github.com/authzed/zed/releases/download/v0.9.0/zed_0.9.0_linux_amd64_gnu.tar.gz", using: CurlDownloadStrategy
+      sha256 "16f1a4672c21cd5982be241950cb4b32b7f9ac43e3c8718b9c06f0d3bca9e153"
 
       def install
         if !File.exists? "zed"
-          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/zed"
+          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/zed"
         end
         bin.install "zed"
         (bash_completion/"zed").write Utils.safe_popen_read("#{bin}/zed", "completion", "bash")
