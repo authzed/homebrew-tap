@@ -27,7 +27,7 @@ class Spicedb < Formula
     end
     if Hardware::CPU.intel?
       url "https://github.com/authzed/spicedb/releases/download/v1.19.1/spicedb_1.19.1_darwin_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "40e0895cd2a362d3930ff1d0306a589273ceacf2a9ad8663dba3c38a3964070"
+      sha256 "40e0895cd2a362d3930ff1d0306a5892e73ceacf2a9ad8663dba3c38a3964070"
 
       def install
         if !File.exists? "spicedb"
