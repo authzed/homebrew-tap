@@ -13,7 +13,7 @@ class Spicedb < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/authzed/spicedb/releases/download/v1.19.1/spicedb_1.19.1_darwin_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "d8d4bfd681b2e0f1fbea96023c7a52b19de31b3a21d40dcb94bb231924d4a3bc"
+      sha256 "aef74c994a3a05f25c9c52080344e6f5aa6ecf82489a08234b8c8a8cfa2d65f4"
 
       def install
         if !File.exists? "spicedb"
@@ -27,7 +27,7 @@ class Spicedb < Formula
     end
     if Hardware::CPU.intel?
       url "https://github.com/authzed/spicedb/releases/download/v1.19.1/spicedb_1.19.1_darwin_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "2f42c263e28354f270f2bb4dbad0c5882dba812d9b6d24db302405f6c96ad069"
+      sha256 "40e0895cd2a362d3930ff1d0306a589273ceacf2a9ad8663dba3c38a3964070"
 
       def install
         if !File.exists? "spicedb"
@@ -44,7 +44,7 @@ class Spicedb < Formula
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/authzed/spicedb/releases/download/v1.19.1/spicedb_1.19.1_linux_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "0302a993771b3ee7cbbaffcd6b6c8dd7ce80b85199f23e4844a21025a51cfbae"
+      sha256 "ea9109d6bc5b390b48410341eeaf111c8541ab9bbb9b90a28b7a312d1cc3cd43"
 
       def install
         if !File.exists? "spicedb"
@@ -58,7 +58,7 @@ class Spicedb < Formula
     end
     if Hardware::CPU.intel?
       url "https://github.com/authzed/spicedb/releases/download/v1.19.1/spicedb_1.19.1_linux_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "24fc26b0bbedbb9ccb7b3f378ac7c2cc5fd7a8ede644056a0fcebe29eb7b258b"
+      sha256 "ad52096cdecb2f5105cf9958c35a12d096cf32d96ab3dcd9d5571706437be902"
 
       def install
         if !File.exists? "spicedb"
