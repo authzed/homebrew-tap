@@ -5,15 +5,15 @@
 class Spicedb < Formula
   desc "SpiceDB is a Zanzibar-inspired database that stores, computes, and validates application permissions."
   homepage "https://authzed.com/"
-  version "1.22.0-rc8"
+  version "1.22.0"
   license "Apache-2.0"
 
   depends_on "go" => :build
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/authzed/spicedb/releases/download/v1.22.0-rc8/spicedb_1.22.0-rc8_darwin_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "f07fd79c7ea785460f405e0df2d662f6a239246eada7ecba4fff314912a622b1"
+    if Hardware::CPU.arm?
+      url "https://github.com/authzed/spicedb/releases/download/v1.22.0/spicedb_1.22.0_darwin_arm64.tar.gz", using: CurlDownloadStrategy
+      sha256 "580d690b1847a6785efc25470457491768542d398b5e07f8cc0e5b65b1ac1c27"
 
       def install
         if !File.exists? "spicedb"
@@ -25,9 +25,9 @@ class Spicedb < Formula
         (fish_completion/"spicedb.fish").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "fish")
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/authzed/spicedb/releases/download/v1.22.0-rc8/spicedb_1.22.0-rc8_darwin_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "fe8fc499190aefed5a5a62054278954098fd1b9a3a3ca1635887c6762060bc4d"
+    if Hardware::CPU.intel?
+      url "https://github.com/authzed/spicedb/releases/download/v1.22.0/spicedb_1.22.0_darwin_amd64.tar.gz", using: CurlDownloadStrategy
+      sha256 "73a9047ea32676a4daac9a054dbf4bced98d1377225b5fa63d4bc4dd18d2f072"
 
       def install
         if !File.exists? "spicedb"
@@ -43,8 +43,8 @@ class Spicedb < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/authzed/spicedb/releases/download/v1.22.0-rc8/spicedb_1.22.0-rc8_linux_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "5bbe6cbccf5c28ec89f842e3d555fc96f2a756ac9347e1b013b859b75a63e3e3"
+      url "https://github.com/authzed/spicedb/releases/download/v1.22.0/spicedb_1.22.0_linux_arm64.tar.gz", using: CurlDownloadStrategy
+      sha256 "e13f0c0c123b04f0ad2d2941465c47265747addec286117b9b0614d8dc323b15"
 
       def install
         if !File.exists? "spicedb"
@@ -57,8 +57,8 @@ class Spicedb < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/authzed/spicedb/releases/download/v1.22.0-rc8/spicedb_1.22.0-rc8_linux_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "d0c205a54efc1571cd9e5a1fb352e881e9936d01f4037cc16acedd4298a1613e"
+      url "https://github.com/authzed/spicedb/releases/download/v1.22.0/spicedb_1.22.0_linux_amd64.tar.gz", using: CurlDownloadStrategy
+      sha256 "68cba1881eae09cf29bf1523a1bcf9ca1ea9f10db07cc02c78b4564602e905ce"
 
       def install
         if !File.exists? "spicedb"
