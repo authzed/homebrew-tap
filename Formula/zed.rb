@@ -16,7 +16,7 @@ class Zed < Formula
       sha256 "c459e354ca42f9837a1f4ed491cec6d803501982bbd9c468065067cba562182f"
 
       def install
-        if !File.exists? "zed"
+        if build.head?
           system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/zed"
         end
         bin.install "zed"
@@ -30,7 +30,7 @@ class Zed < Formula
       sha256 "f4a217a968f938c23b67a850a322fc3e499bb95159d98f47ef05f67c25e1d9e7"
 
       def install
-        if !File.exists? "zed"
+        if build.head?
           system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/zed"
         end
         bin.install "zed"
@@ -47,7 +47,7 @@ class Zed < Formula
       sha256 "057667596b5eb830bd37d81de9820bbe091d9267440161fa996335fb12bb261e"
 
       def install
-        if !File.exists? "zed"
+        if build.head?
           system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/zed"
         end
         bin.install "zed"
@@ -61,7 +61,7 @@ class Zed < Formula
       sha256 "cd223d204ee5b95f70f346725dd175aa9efbf9d5e0bbe3f1c3da6bd5788d9d67"
 
       def install
-        if !File.exists? "zed"
+        if build.head?
           system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty)\" ./cmd/zed"
         end
         bin.install "zed"
