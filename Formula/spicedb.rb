@@ -5,18 +5,18 @@
 class Spicedb < Formula
   desc "SpiceDB is a Zanzibar-inspired database that stores, computes, and validates application permissions."
   homepage "https://authzed.com/"
-  version "1.32.0"
+  version "1.33.0"
   license "Apache-2.0"
 
   depends_on "go" => :build
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/authzed/spicedb/releases/download/v1.32.0/spicedb_1.32.0_darwin_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "008bf1c4ae7dded354192bdec841048cc84d7dac5c0d7ba0192e00549de055a1"
+    on_intel do
+      url "https://github.com/authzed/spicedb/releases/download/v1.33.0/spicedb_1.33.0_darwin_amd64.tar.gz", using: CurlDownloadStrategy
+      sha256 "04ae90115b75d8a34b2457ecb9adb8b0729631fa3c004408cd25b2bd8028a288"
 
       def install
-        if build.head?
+        if !File.exists? "spicedb"
           system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
         end
         bin.install "spicedb"
@@ -25,12 +25,12 @@ class Spicedb < Formula
         (fish_completion/"spicedb.fish").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "fish")
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/authzed/spicedb/releases/download/v1.32.0/spicedb_1.32.0_darwin_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "b76b7e005e40fa29bc61da35f387e741f7ebe58457ccc1420e4e7847201c4268"
+    on_arm do
+      url "https://github.com/authzed/spicedb/releases/download/v1.33.0/spicedb_1.33.0_darwin_arm64.tar.gz", using: CurlDownloadStrategy
+      sha256 "245bb4bbf98093d625f786d1f5d034f9a7090cfe82247afc6b9764e20c9e280b"
 
       def install
-        if build.head?
+        if !File.exists? "spicedb"
           system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
         end
         bin.install "spicedb"
@@ -42,32 +42,36 @@ class Spicedb < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/authzed/spicedb/releases/download/v1.32.0/spicedb_1.32.0_linux_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "91b85195ce459b3e28bf53145844e93ecd26d2ecf7a21eaa51d2aff90a30465e"
+    on_intel do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/authzed/spicedb/releases/download/v1.33.0/spicedb_1.33.0_linux_amd64.tar.gz", using: CurlDownloadStrategy
+        sha256 "39055ce2ec300630a3fffa8eb790f49382a1575623e12ce37a604b51b42b2ece"
 
-      def install
-        if build.head?
-          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
+        def install
+          if !File.exists? "spicedb"
+            system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
+          end
+          bin.install "spicedb"
+          (bash_completion/"spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "bash")
+          (zsh_completion/"_spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "zsh")
+          (fish_completion/"spicedb.fish").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "fish")
         end
-        bin.install "spicedb"
-        (bash_completion/"spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "bash")
-        (zsh_completion/"_spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "zsh")
-        (fish_completion/"spicedb.fish").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "fish")
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/authzed/spicedb/releases/download/v1.32.0/spicedb_1.32.0_linux_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "b4b008943e9efe6b886d2ac7b2d158678d97ed39ad94a3b3f51e75aedd0de932"
+    on_arm do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/authzed/spicedb/releases/download/v1.33.0/spicedb_1.33.0_linux_arm64.tar.gz", using: CurlDownloadStrategy
+        sha256 "903547fcbb45a63e6fa385ce92076855c640dc9dbc6651b09140dee44f60d504"
 
-      def install
-        if build.head?
-          system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
+        def install
+          if !File.exists? "spicedb"
+            system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
+          end
+          bin.install "spicedb"
+          (bash_completion/"spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "bash")
+          (zsh_completion/"_spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "zsh")
+          (fish_completion/"spicedb.fish").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "fish")
         end
-        bin.install "spicedb"
-        (bash_completion/"spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "bash")
-        (zsh_completion/"_spicedb").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "zsh")
-        (fish_completion/"spicedb.fish").write Utils.safe_popen_read("#{bin}/spicedb", "completion", "fish")
       end
     end
   end
