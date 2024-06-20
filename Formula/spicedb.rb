@@ -5,18 +5,18 @@
 class Spicedb < Formula
   desc "SpiceDB is a Zanzibar-inspired database that stores, computes, and validates application permissions."
   homepage "https://authzed.com/"
-  version "1.33.0"
+  version "1.33.1"
   license "Apache-2.0"
 
   depends_on "go" => :build
 
   on_macos do
     on_intel do
-      url "https://github.com/authzed/spicedb/releases/download/v1.33.0/spicedb_1.33.0_darwin_amd64.tar.gz", using: CurlDownloadStrategy
-      sha256 "04ae90115b75d8a34b2457ecb9adb8b0729631fa3c004408cd25b2bd8028a288"
+      url "https://github.com/authzed/spicedb/releases/download/v1.33.1/spicedb_1.33.1_darwin_amd64.tar.gz", using: CurlDownloadStrategy
+      sha256 "0a86a86db70565e498ee1056eac0209edcbdb97ce998431dbfe4b776506000de"
 
       def install
-        if build.head?
+        if !File.exists? "spicedb"
           system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
         end
         bin.install "spicedb"
@@ -26,11 +26,11 @@ class Spicedb < Formula
       end
     end
     on_arm do
-      url "https://github.com/authzed/spicedb/releases/download/v1.33.0/spicedb_1.33.0_darwin_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "245bb4bbf98093d625f786d1f5d034f9a7090cfe82247afc6b9764e20c9e280b"
+      url "https://github.com/authzed/spicedb/releases/download/v1.33.1/spicedb_1.33.1_darwin_arm64.tar.gz", using: CurlDownloadStrategy
+      sha256 "1ce81aef06cac30a9aaa290f17ab6506788b2d6770ea12f8d4ab0781d499bf0c"
 
       def install
-        if build.head?
+        if !File.exists? "spicedb"
           system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
         end
         bin.install "spicedb"
@@ -44,11 +44,11 @@ class Spicedb < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/authzed/spicedb/releases/download/v1.33.0/spicedb_1.33.0_linux_amd64.tar.gz", using: CurlDownloadStrategy
-        sha256 "39055ce2ec300630a3fffa8eb790f49382a1575623e12ce37a604b51b42b2ece"
+        url "https://github.com/authzed/spicedb/releases/download/v1.33.1/spicedb_1.33.1_linux_amd64.tar.gz", using: CurlDownloadStrategy
+        sha256 "fe19e9aa21cb888b9eda91ae4689a17c085fb75b1ab973d801ffee7d4b15c72a"
 
         def install
-          if build.head?
+          if !File.exists? "spicedb"
             system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
           end
           bin.install "spicedb"
@@ -60,11 +60,11 @@ class Spicedb < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/authzed/spicedb/releases/download/v1.33.0/spicedb_1.33.0_linux_arm64.tar.gz", using: CurlDownloadStrategy
-        sha256 "903547fcbb45a63e6fa385ce92076855c640dc9dbc6651b09140dee44f60d504"
+        url "https://github.com/authzed/spicedb/releases/download/v1.33.1/spicedb_1.33.1_linux_arm64.tar.gz", using: CurlDownloadStrategy
+        sha256 "700041818679fe697abeee916765d7cd2da348723a3789ccb3ae701f559ab245"
 
         def install
-          if build.head?
+          if !File.exists? "spicedb"
             system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
           end
           bin.install "spicedb"
