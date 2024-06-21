@@ -16,7 +16,7 @@ class SpicedbAT1331 < Formula
       sha256 "0a86a86db70565e498ee1056eac0209edcbdb97ce998431dbfe4b776506000de"
 
       def install
-        if !File.exists? "spicedb"
+        if build.head?
           system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
         end
         bin.install "spicedb"
@@ -30,7 +30,7 @@ class SpicedbAT1331 < Formula
       sha256 "1ce81aef06cac30a9aaa290f17ab6506788b2d6770ea12f8d4ab0781d499bf0c"
 
       def install
-        if !File.exists? "spicedb"
+        if build.head?
           system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
         end
         bin.install "spicedb"
@@ -48,7 +48,7 @@ class SpicedbAT1331 < Formula
         sha256 "fe19e9aa21cb888b9eda91ae4689a17c085fb75b1ab973d801ffee7d4b15c72a"
 
         def install
-          if !File.exists? "spicedb"
+          if build.head?
             system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
           end
           bin.install "spicedb"
@@ -64,7 +64,7 @@ class SpicedbAT1331 < Formula
         sha256 "700041818679fe697abeee916765d7cd2da348723a3789ccb3ae701f559ab245"
 
         def install
-          if !File.exists? "spicedb"
+          if build.head?
             system "go build --ldflags \"-s -w -X github.com/jzelinskie/cobrautil/v2.Version=$(git describe --always --abbrev=7 --dirty --tags)\" ./cmd/spicedb"
           end
           bin.install "spicedb"
