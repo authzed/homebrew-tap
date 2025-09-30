@@ -5,15 +5,15 @@
 class Zed < Formula
   desc "command-line client for managing SpiceDB"
   homepage "https://github.com/authzed/zed"
-  version "0.31.1"
+  version "0.32.0"
   license "Apache-2.0"
 
   depends_on "go" => :build
 
   on_macos do
     on_intel do
-      url "https://github.com/authzed/zed/releases/download/v0.31.1/zed_0.31.1_darwin_amd64.tar.gz"
-      sha256 "6e2cb9ded9da766cfde65eb5fd26e58c1b17e8076bad9f5253feeb3552a31a40"
+      url "https://github.com/authzed/zed/releases/download/v0.32.0/zed_0.32.0_darwin_amd64.tar.gz"
+      sha256 "0cf58da28cdc054af8474308d5f5f7ccaa1c1963a97ed0c7e30d99c90f5e9ba3"
 
       def install
         if build.head?
@@ -26,8 +26,8 @@ class Zed < Formula
       end
     end
     on_arm do
-      url "https://github.com/authzed/zed/releases/download/v0.31.1/zed_0.31.1_darwin_arm64.tar.gz"
-      sha256 "fa5d67281593dd6e03d679dcf381fedf793967f49262b02e1c7ddb4cc078f2dd"
+      url "https://github.com/authzed/zed/releases/download/v0.32.0/zed_0.32.0_darwin_arm64.tar.gz"
+      sha256 "025e0c792aaa7852067fdeedc1fc7338d563027af4560a67b6249331269fe087"
 
       def install
         if build.head?
@@ -44,8 +44,8 @@ class Zed < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/authzed/zed/releases/download/v0.31.1/zed_0.31.1_linux_amd64_gnu.tar.gz"
-        sha256 "3e04606f69c1e72078841706080cddc44f1a6e6fa08456f258ac226b2e402f88"
+        url "https://github.com/authzed/zed/releases/download/v0.32.0/zed_0.32.0_linux_amd64_gnu.tar.gz"
+        sha256 "9a803d310e02377dde40c9eaef793b7535a73a810f6452f898c9dfa5f8a7faf8"
 
         def install
           if build.head?
@@ -60,8 +60,8 @@ class Zed < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/authzed/zed/releases/download/v0.31.1/zed_0.31.1_linux_arm64_gnu.tar.gz"
-        sha256 "22f8df30799a3ba0abfe4dc0018db7b5299faf843d46314adb68ec7cc18cc051"
+        url "https://github.com/authzed/zed/releases/download/v0.32.0/zed_0.32.0_linux_arm64_gnu.tar.gz"
+        sha256 "61f9d0e09972d7cd8539774b6dab288c72cdabd666c4266c5725734d08e7874b"
 
         def install
           if build.head?
