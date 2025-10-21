@@ -5,15 +5,15 @@
 class Zed < Formula
   desc "command-line client for managing SpiceDB"
   homepage "https://github.com/authzed/zed"
-  version "0.33.0"
+  version "0.33.1"
   license "Apache-2.0"
 
   depends_on "go" => :build
 
   on_macos do
-    on_intel do
-      url "https://github.com/authzed/zed/releases/download/v0.33.0/zed_0.33.0_darwin_amd64.tar.gz"
-      sha256 "c3d1bef0902c0b8bbb5dccff519b20cca002d29608c5bee39162323bb1fcda60"
+    if Hardware::CPU.intel?
+      url "https://github.com/authzed/zed/releases/download/v0.33.1/zed_0.33.1_darwin_amd64.tar.gz"
+      sha256 "12c583546f3b9b9eb0d31c6890eb3b338221a46c081db611e3061b5e5f248078"
 
       def install
         if build.head?
@@ -25,9 +25,9 @@ class Zed < Formula
         generate_completions_from_executable(bin/"zed", "completion", shells: [:bash, :zsh, :fish])
       end
     end
-    on_arm do
-      url "https://github.com/authzed/zed/releases/download/v0.33.0/zed_0.33.0_darwin_arm64.tar.gz"
-      sha256 "e5de1d665e1969391903c61636ec6a40c69b3dc4ec34c450cd5f0f46bb495e8d"
+    if Hardware::CPU.arm?
+      url "https://github.com/authzed/zed/releases/download/v0.33.1/zed_0.33.1_darwin_arm64.tar.gz"
+      sha256 "ab467762e6c98fe83a86caf4423053f48e47593981898639433bb14f388629e7"
 
       def install
         if build.head?
@@ -42,36 +42,30 @@ class Zed < Formula
   end
 
   on_linux do
-    on_intel do
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/authzed/zed/releases/download/v0.33.0/zed_0.33.0_linux_amd64_gnu.tar.gz"
-        sha256 "24c9ae0f1203a4331444269ce695ec2a575955f5d4d2b9e5bfb6650800aa6a68"
-
-        def install
-          if build.head?
-              versionVar = "github.com/jzelinskie/cobrautil/v2.Version"
-              versionCmd = "$(git describe --always --abbrev=7 --dirty --tags)"
-              system "go build --ldflags '-s -w -X #{versionVar}=#{versionCmd}' ./cmd/zed"
-          end
-          bin.install "zed"
-          generate_completions_from_executable(bin/"zed", "completion", shells: [:bash, :zsh, :fish])
+    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+      url "https://github.com/authzed/zed/releases/download/v0.33.1/zed_0.33.1_linux_amd64_gnu.tar.gz"
+      sha256 "5ea4e49025dc199f2d6d79ee26b81a1bcb48c833f036c55cdd4d374e7b8fd6fc"
+      def install
+        if build.head?
+            versionVar = "github.com/jzelinskie/cobrautil/v2.Version"
+            versionCmd = "$(git describe --always --abbrev=7 --dirty --tags)"
+            system "go build --ldflags '-s -w -X #{versionVar}=#{versionCmd}' ./cmd/zed"
         end
+        bin.install "zed"
+        generate_completions_from_executable(bin/"zed", "completion", shells: [:bash, :zsh, :fish])
       end
     end
-    on_arm do
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/authzed/zed/releases/download/v0.33.0/zed_0.33.0_linux_arm64_gnu.tar.gz"
-        sha256 "ed63e0fdf5ec73e81466ddfcdf9206c09dc356109f219c4bb67a6d11639cd254"
-
-        def install
-          if build.head?
-              versionVar = "github.com/jzelinskie/cobrautil/v2.Version"
-              versionCmd = "$(git describe --always --abbrev=7 --dirty --tags)"
-              system "go build --ldflags '-s -w -X #{versionVar}=#{versionCmd}' ./cmd/zed"
-          end
-          bin.install "zed"
-          generate_completions_from_executable(bin/"zed", "completion", shells: [:bash, :zsh, :fish])
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/authzed/zed/releases/download/v0.33.1/zed_0.33.1_linux_arm64_gnu.tar.gz"
+      sha256 "327c46d634b7eb56f4cde8d7def1aa84df5a6616adb5655dedd5e8dbab1ac88d"
+      def install
+        if build.head?
+            versionVar = "github.com/jzelinskie/cobrautil/v2.Version"
+            versionCmd = "$(git describe --always --abbrev=7 --dirty --tags)"
+            system "go build --ldflags '-s -w -X #{versionVar}=#{versionCmd}' ./cmd/zed"
         end
+        bin.install "zed"
+        generate_completions_from_executable(bin/"zed", "completion", shells: [:bash, :zsh, :fish])
       end
     end
   end
