@@ -5,15 +5,15 @@
 class Spicedb < Formula
   desc "Google Zanzibar-inspired permissions database for fine-grained access control"
   homepage "https://github.com/authzed/spicedb"
-  version "1.46.2"
+  version "1.47.1"
   license "Apache-2.0"
 
   depends_on "go" => :build
 
   on_macos do
     on_intel do
-      url "https://github.com/authzed/spicedb/releases/download/v1.46.2/spicedb_1.46.2_darwin_amd64.tar.gz"
-      sha256 "65f93d6a3cd50afba450844ee3e388cb07355615b4d14ad77267982158979778"
+      url "https://github.com/authzed/spicedb/releases/download/v1.47.1/spicedb_1.47.1_darwin_amd64.tar.gz"
+      sha256 "67dc53b60cf71224cfc819451eda0cfd328a3bb0f7f119decec79e53e0e0b3d8"
 
       def install
         if build.head?
@@ -26,8 +26,8 @@ class Spicedb < Formula
       end
     end
     on_arm do
-      url "https://github.com/authzed/spicedb/releases/download/v1.46.2/spicedb_1.46.2_darwin_arm64.tar.gz"
-      sha256 "bdb0f6a7e2430f15dfb2c3b40b8f2c013117b48f1ccc7bc220ec5b487d828bd5"
+      url "https://github.com/authzed/spicedb/releases/download/v1.47.1/spicedb_1.47.1_darwin_arm64.tar.gz"
+      sha256 "ad8422188c24487e233e1a7692bbe060c690c81a91cee2feb54993c968fb639b"
 
       def install
         if build.head?
@@ -44,8 +44,8 @@ class Spicedb < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/authzed/spicedb/releases/download/v1.46.2/spicedb_1.46.2_linux_amd64.tar.gz"
-        sha256 "92892392f6ed71bc793cbe735ebcd0fbf6cd6823ada95431ed8eaf452591ea22"
+        url "https://github.com/authzed/spicedb/releases/download/v1.47.1/spicedb_1.47.1_linux_amd64.tar.gz"
+        sha256 "03ded12c6c418ed8c15a4ca0cef46be00a44b8be180c4c25fb4bc0d85abff544"
 
         def install
           if build.head?
@@ -60,8 +60,8 @@ class Spicedb < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/authzed/spicedb/releases/download/v1.46.2/spicedb_1.46.2_linux_arm64.tar.gz"
-        sha256 "0177ee1b0ee3edf42eefafadb6b4d033ebc1800b6a282c3f17406cf10c1e511b"
+        url "https://github.com/authzed/spicedb/releases/download/v1.47.1/spicedb_1.47.1_linux_arm64.tar.gz"
+        sha256 "e08f3c524617c2bb394cc92d83ab0e90e56a3880609b5ff18903197465a2e2d0"
 
         def install
           if build.head?
