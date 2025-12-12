@@ -5,35 +5,35 @@
 class Spicedb < Formula
   desc "Google Zanzibar-inspired permissions database for fine-grained access control"
   homepage "https://github.com/authzed/spicedb"
-  version "1.47.1"
+  version "1.48.0"
   license "Apache-2.0"
 
   depends_on "go" => :build
 
   on_macos do
     on_intel do
-      url "https://github.com/authzed/spicedb/releases/download/v1.47.1/spicedb_1.47.1_darwin_amd64.tar.gz"
-      sha256 "67dc53b60cf71224cfc819451eda0cfd328a3bb0f7f119decec79e53e0e0b3d8"
+      url "https://github.com/authzed/spicedb/releases/download/v1.48.0/spicedb_1.48.0_darwin_amd64.tar.gz"
+      sha256 "c611fd2287c7d0d44d8e69414050b86aadd6988cdf06f845ad0e4d9d6ba3039c"
 
       def install
         if build.head?
           versionVar = "github.com/jzelinskie/cobrautil/v2.Version"
           versionCmd = "$(git describe --always --abbrev=7 --dirty --tags)"
-          system "go build --ldflags '-s -w -X #{versionVar}=#{versionCmd}' ./cmd/spicedb"
+          system "go build -tags memoryprotection --ldflags '-s -w -checklinkname=0 -X #{versionVar}=#{versionCmd}' ./cmd/spicedb"
         end
         bin.install "spicedb"
         generate_completions_from_executable(bin/"spicedb", "completion", shells: [:bash, :zsh, :fish])
       end
     end
     on_arm do
-      url "https://github.com/authzed/spicedb/releases/download/v1.47.1/spicedb_1.47.1_darwin_arm64.tar.gz"
-      sha256 "ad8422188c24487e233e1a7692bbe060c690c81a91cee2feb54993c968fb639b"
+      url "https://github.com/authzed/spicedb/releases/download/v1.48.0/spicedb_1.48.0_darwin_arm64.tar.gz"
+      sha256 "9258b0af0d16f9a2f075742bfeb80cab1cad9c8b45ee8e4566098311cf28a882"
 
       def install
         if build.head?
           versionVar = "github.com/jzelinskie/cobrautil/v2.Version"
           versionCmd = "$(git describe --always --abbrev=7 --dirty --tags)"
-          system "go build --ldflags '-s -w -X #{versionVar}=#{versionCmd}' ./cmd/spicedb"
+          system "go build -tags memoryprotection --ldflags '-s -w -checklinkname=0 -X #{versionVar}=#{versionCmd}' ./cmd/spicedb"
         end
         bin.install "spicedb"
         generate_completions_from_executable(bin/"spicedb", "completion", shells: [:bash, :zsh, :fish])
@@ -44,14 +44,14 @@ class Spicedb < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/authzed/spicedb/releases/download/v1.47.1/spicedb_1.47.1_linux_amd64.tar.gz"
-        sha256 "03ded12c6c418ed8c15a4ca0cef46be00a44b8be180c4c25fb4bc0d85abff544"
+        url "https://github.com/authzed/spicedb/releases/download/v1.48.0/spicedb_1.48.0_linux_amd64.tar.gz"
+        sha256 "f1e17a9c844b2d0dce432fb10f9cd6a7996a5cd12905c4e1b4daccd42272b527"
 
         def install
           if build.head?
             versionVar = "github.com/jzelinskie/cobrautil/v2.Version"
             versionCmd = "$(git describe --always --abbrev=7 --dirty --tags)"
-            system "go build --ldflags '-s -w -X #{versionVar}=#{versionCmd}' ./cmd/spicedb"
+            system "go build -tags memoryprotection --ldflags '-s -w -checklinkname=0 -X #{versionVar}=#{versionCmd}' ./cmd/spicedb"
           end
           bin.install "spicedb"
           generate_completions_from_executable(bin/"spicedb", "completion", shells: [:bash, :zsh, :fish])
@@ -60,14 +60,14 @@ class Spicedb < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/authzed/spicedb/releases/download/v1.47.1/spicedb_1.47.1_linux_arm64.tar.gz"
-        sha256 "e08f3c524617c2bb394cc92d83ab0e90e56a3880609b5ff18903197465a2e2d0"
+        url "https://github.com/authzed/spicedb/releases/download/v1.48.0/spicedb_1.48.0_linux_arm64.tar.gz"
+        sha256 "757ebc0861b31575b053e4842784aab5574f5ef73cef28f9074ca1913ce13759"
 
         def install
           if build.head?
             versionVar = "github.com/jzelinskie/cobrautil/v2.Version"
             versionCmd = "$(git describe --always --abbrev=7 --dirty --tags)"
-            system "go build --ldflags '-s -w -X #{versionVar}=#{versionCmd}' ./cmd/spicedb"
+            system "go build -tags memoryprotection --ldflags '-s -w -checklinkname=0 -X #{versionVar}=#{versionCmd}' ./cmd/spicedb"
           end
           bin.install "spicedb"
           generate_completions_from_executable(bin/"spicedb", "completion", shells: [:bash, :zsh, :fish])
