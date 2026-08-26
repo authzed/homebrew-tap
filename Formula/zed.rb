@@ -5,15 +5,15 @@
 class Zed < Formula
   desc "command-line client for managing SpiceDB"
   homepage "https://github.com/authzed/zed"
-  version "1.2.0"
+  version "1.2.1"
   license "Apache-2.0"
 
   depends_on "go" => :build
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/authzed/zed/releases/download/v1.2.0/zed_1.2.0_darwin_amd64.tar.gz"
-      sha256 "19324e5135fb9f153351d1b7cac7b84304d8794f5524be241bd7a801e50c3d6c"
+      url "https://github.com/authzed/zed/releases/download/v1.2.1/zed_1.2.1_darwin_amd64.tar.gz"
+      sha256 "d3b0cf952d02a6bf74ed409f3a4cb6d4a2430414e7cf09db46632e6be0cd72c5"
 
       def install
         if build.head?
@@ -26,8 +26,8 @@ class Zed < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/authzed/zed/releases/download/v1.2.0/zed_1.2.0_darwin_arm64.tar.gz"
-      sha256 "561b0a0b2087b3aac14157a08dea48acafe2ffc6f1119a93ba93dfc534105645"
+      url "https://github.com/authzed/zed/releases/download/v1.2.1/zed_1.2.1_darwin_arm64.tar.gz"
+      sha256 "b169570ed11707f24c439e99ed2917df90b8af642236fb935c5d23892dcf5f62"
 
       def install
         if build.head?
@@ -43,8 +43,8 @@ class Zed < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/authzed/zed/releases/download/v1.2.0/zed_1.2.0_linux_amd64_gnu.tar.gz"
-      sha256 "67098967cb8fe0ec43b0f321e1724a153f6538e3b3f0598ee61ff83b2b0b55b8"
+      url "https://github.com/authzed/zed/releases/download/v1.2.1/zed_1.2.1_linux_amd64_gnu.tar.gz"
+      sha256 "600dbe497ddabb26372aeb69b7a15ff8624a41925f1e47146177132635f4b752"
       def install
         if build.head?
             versionVar = "github.com/jzelinskie/cobrautil/v2.Version"
@@ -56,8 +56,8 @@ class Zed < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/authzed/zed/releases/download/v1.2.0/zed_1.2.0_linux_arm64_gnu.tar.gz"
-      sha256 "604114e4209fb677c47e295bd8365461c695f238b11000138d642ab9dc5e9c37"
+      url "https://github.com/authzed/zed/releases/download/v1.2.1/zed_1.2.1_linux_arm64_gnu.tar.gz"
+      sha256 "01a592fa465149a7c55e63bb8d456dfe072d124f12e9b34cdf76a931dda4ceb6"
       def install
         if build.head?
             versionVar = "github.com/jzelinskie/cobrautil/v2.Version"
